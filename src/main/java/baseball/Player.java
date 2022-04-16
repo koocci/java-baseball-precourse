@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.configuration.Configuration.MAX_NUMBERS_CNT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +49,7 @@ public class Player {
     }
 
     private void validateCount() {
-        if (numbers.size() != 3) {
+        if (numbers.size() != MAX_NUMBERS_CNT) {
             throw new IllegalArgumentException("The input numbers must be 3 digits.");
         }
     }

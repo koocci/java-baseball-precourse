@@ -1,5 +1,9 @@
 package baseball;
 
+import static baseball.configuration.Configuration.GAME_OVER;
+import static baseball.configuration.Configuration.RESTART;
+import static baseball.configuration.Configuration.STRIKE_OUT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -37,16 +41,16 @@ public class BaseBallGame {
     }
 
     private void endOrRestart() {
-        String playerInput = getPlayerInput();
-        if (!("1".equals(playerInput) || "2".equals(playerInput))) {
+        String playerInput = getGameOverTypeInput();
+        if (!(RESTART.equals(playerInput) || GAME_OVER.equals(playerInput))) {
             throw new IllegalArgumentException("The input value must be \"1\" or \"2\"");
         }
-        if ("1".equals(playerInput)) {
+        if (RESTART.equals(playerInput)) {
             restart();
         }
     }
 
-    private String getPlayerInput() {
+    private String getGameOverTypeInput() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return Console.readLine();
     }
@@ -63,7 +67,7 @@ public class BaseBallGame {
         for (int i = 0; i < playerNumbers.size(); i++) {
             setPlayResult(playerNumbers.get(i), i);
         }
-        getPlayResult();
+        getPlayHint();
     }
 
     private void playerSetUp() {
@@ -91,7 +95,7 @@ public class BaseBallGame {
     }
 
     private Boolean isWin() {
-        return strike == 3;
+        return strike == STRIKE_OUT;
     }
 
     private void setNothingHint(StringBuffer sb) {
@@ -115,7 +119,7 @@ public class BaseBallGame {
         }
     }
 
-    private void getPlayResult() {
+    private void getPlayHint() {
         StringBuffer sb = new StringBuffer();
         setNothingHint(sb);
         setBallHint(sb);
