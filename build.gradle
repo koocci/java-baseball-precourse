@@ -23,9 +23,9 @@ java {
 
 checkstyle {
     maxWarnings = 0
-    configFile = file("${rootDir}/wooteco-checkstyle.xml")
-    configProperties = ["suppressionFile": "${rootDir}/wooteco-checkstyle-suppressions.xml"]
-    toolVersion = "10.1"
+    configFile = file("${rootDir}/config/checkstyle/wooteco-checkstyle.xml")
+    configProperties = ["suppressionFile": "${rootDir}/config/checkstyle/wooteco-checkstyle-suppressions.xml"]
+    toolVersion = "9.3"
 }
 
 test {

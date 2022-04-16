@@ -37,8 +37,7 @@
     </module>
     <!-- https://checkstyle.org/config_filters.html#SuppressionFilter -->
     <module name="SuppressionFilter">
-        <property name="file" value="${org.checkstyle.google.suppressionfilter.config}"
-                  default="checkstyle-suppressions.xml"/>
+        <property name="file" value="${config_loc}/wooteco-checkstyle-suppressions.xml"/>
         <property name="optional" value="true"/>
     </module>
 
@@ -113,8 +112,7 @@
         <module name="WhitespaceAfter">
             <property name="tokens"
                       value="COMMA, SEMI, TYPECAST, LITERAL_IF, LITERAL_ELSE,
-                    LITERAL_WHILE, LITERAL_DO, LITERAL_FOR, DO_WHILE, ELLIPSIS,
-                    LITERAL_SWITCH, LAMBDA"/>
+                    LITERAL_WHILE, LITERAL_DO, LITERAL_FOR, DO_WHILE"/>
         </module>
         <module name="WhitespaceAround">
             <property name="allowEmptyConstructors" value="true"/>
@@ -273,11 +271,17 @@
         <module name="NoWhitespaceBeforeCaseDefaultColon"/>
         <module name="OverloadMethodsDeclarationOrder"/>
         <module name="VariableDeclarationUsageDistance"/>
-        <module name="CustomImportOrder">
-            <property name="sortImportsInGroupAlphabetically" value="true"/>
-            <property name="separateLineBetweenGroups" value="true"/>
-            <property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>
-            <property name="tokens" value="IMPORT, STATIC_IMPORT, PACKAGE_DEF"/>
+        <module name="ImportOrder">
+            <property name="ordered" value="true"/>
+            <property name="separated" value="true"/>
+            <property name="option" value="top"/>
+            <property name="sortStaticImportsAlphabetically" value="true"/>
+            <message key="import.groups.separated.internally"
+                     value="[import-grouping] Extra separation in import group before ''{0}''"/>
+            <message key="import.ordering"
+                     value="[import-grouping] Wrong order for ''{0}'' import."/>
+            <message key="import.separation"
+                     value="[import-grouping] ''{0}'' should be separated from previous imports."/>
         </module>
         <module name="MethodParamPad">
             <property name="tokens"
